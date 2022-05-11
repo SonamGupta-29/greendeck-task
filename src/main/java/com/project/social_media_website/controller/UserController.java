@@ -21,7 +21,7 @@ public class UserController {
         return userService.userDetail(userDetails);
     }
 
-    @PostMapping("userlogin")   //end point of login
+    @PostMapping("login")   //end point of login
     public ResponseEntity<BaseResponse> customerLogin(@RequestBody LoginDetails loginDetails) {
 
 
