@@ -91,6 +91,52 @@ private String email;
         baseResponse.setHttpStatusCode(HttpStatus.OK.value());
         baseResponse.setResponse(user);
         return new ResponseEntity<BaseResponse>(baseResponse, HttpStatus.OK);
+        
+        
+        
+        Today I write Get Request for image
+        
+        //This is my Get request
+         @GetMapping("user-img-fetch") //end point  
+        public ResponseEntity<BaseResponse> userImage(){
+
+        return userService.getUserImage();
+    }
+    
+    In DTO i have to write the List where fetch th another DTO 
+    
+     private List<UserDetails> userDetails;
+     
+     In another DTO i gave one field
+      private String SocialLogoImage;
+      
+      In entity I gave the column name which is in SQL table also
+       @Column(name = "social_logo_img")
+    private String SocialLogoImage;
+    
+    In DAO i have to writeQuery
+    @Query(value = "SELECT * FROM user" , nativeQuery = true)  //user is my table name
+    List<User> userList();
+      
+    In ServiceImpl i set and get the image path and also give some message
+    
+    BaseResponse baseResponse = new BaseResponse();
+        UserDetailResponse userDetailResponse = new UserDetailResponse();
+        List<User> userList = userDAO.userList();
+        List<UserDetails> userDetails = new ArrayList<>();
+        for (User user : userList) {
+            UserDetails userDetail = new UserDetails();
+            userDetail.setSocialLogoImage(user.getSocialLogoImage());
+
+
+            userDetails.add(userDetail);
+        }
+        userDetailResponse.setUserDetails(userDetails);
+        baseResponse.setMessage("image successfully fetched");
+        baseResponse.setHttpStatus(HttpStatus.OK);
+        baseResponse.setHttpStatusCode(HttpStatus.OK.value());
+
+        return new ResponseEntity<>(baseResponse, HttpStatus.OK);
 
         
         
