@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 public class UserController {
 
@@ -16,7 +18,7 @@ public class UserController {
     public UserService userService;
 
     @PostMapping("user")  //end point of registration
-    public String userData(@RequestBody UserDetails userDetails) {
+    public String userData(@RequestBody UserDetails userDetails) throws IOException {
 
         return userService.userDetail(userDetails);
     }
@@ -33,5 +35,11 @@ public class UserController {
             return new ResponseEntity<BaseResponse>(baseResponse, HttpStatus.BAD_REQUEST);
         }
         return userService.login(loginDetails);
+    }
+
+    @GetMapping("user-img-fetch")
+        public ResponseEntity<BaseResponse> userImage(){
+
+        return userService.getUserImage();
     }
 }

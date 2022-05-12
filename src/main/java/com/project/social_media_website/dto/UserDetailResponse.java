@@ -5,17 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public class UserDetails {
+public class UserDetailResponse {
 
-    private String SocialLogoImage;
-    private String name;
-    private String mob_num;
-    private String dob;
-    private String email;
-    private String password;
+    private List<UserDetails> userDetails;
 }

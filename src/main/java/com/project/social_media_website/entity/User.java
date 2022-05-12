@@ -36,4 +36,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "social_logo_img")
+    private String SocialLogoImage;
 }
