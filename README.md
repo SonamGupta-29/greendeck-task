@@ -139,5 +139,7 @@ private String email;
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
 
         
+        Now i used Swagger in springboot Application
+        
         
         
